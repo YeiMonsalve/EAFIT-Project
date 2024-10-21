@@ -19,7 +19,7 @@ public class UbicacionRegionController {
     private UbicacionRegionService ubicacionRegionService;
 
     // Crear una ubicación.
-    @Operation(summary = "Este pot permite añadir una nueva ubicación a la tabla 'ubicacion_region'.", description = "Para crear una ubicación solo se necesita agregar el nombre de esta; al darle click al botón 'Execute', este guardara la ubicación y le asignará un Id.")
+    @Operation(summary = "Este post permite añadir una nueva ubicación a la tabla 'ubicacion_region'.", description = "Para crear una ubicación solo se necesita agregar el nombre de esta; al darle click al botón 'Execute', este guardara la ubicación y le asignará un Id.")
     @PostMapping
     public UbicacionRegion crearUbicacion(@RequestBody UbicacionRegionNoIdDTO ubicacionRegionNoIdDTO) {
         return ubicacionRegionService.crearUnaUbicacionRegion(ubicacionRegionNoIdDTO);
@@ -35,8 +35,8 @@ public class UbicacionRegionController {
     //Actualizar una ubicación.
     @Operation(summary = "Este put actualiza una ubicación de la tabla 'ubicacion_region' mediante su Id.", description = "Este método solo permite modificar la región ya que el Id es único y este se genera automáticamente. ")
     @PutMapping("/{id}")
-    public ResponseEntity<UbicacionRegion> actualizarUbicacion(@PathVariable Long id, @RequestBody UbicacionRegionNoIdDTO ubicaionDetails) {
-        return ResponseEntity.ok(ubicacionRegionService.actualizarUbicacionRegion(id, ubicaionDetails));
+    public ResponseEntity<UbicacionRegion> actualizarUbicacion(@PathVariable Long id, @RequestBody UbicacionRegionNoIdDTO ubicacionDetails) {
+        return ResponseEntity.ok(ubicacionRegionService.actualizarUbicacionRegion(id, ubicacionDetails));
     }
 
     //Obtener una ubicación por Id.
