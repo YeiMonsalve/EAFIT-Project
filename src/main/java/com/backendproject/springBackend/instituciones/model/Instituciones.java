@@ -24,8 +24,4 @@ public class Instituciones {
     @JoinColumn(name = "id_region")
     private UbicacionRegion idRegion;
 
-    @OneToMany(mappedBy = "institucionId", cascade = CascadeType.REMOVE)
-    @Setter(AccessLevel.NONE)
-    @Getter(AccessLevel.NONE)
-    private List<InstitucionesOportunidades> oportunidadesInstituciones;
 }
