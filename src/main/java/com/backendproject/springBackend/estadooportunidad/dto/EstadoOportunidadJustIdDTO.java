@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EstadoOportunidadJustId {
+public class EstadoOportunidadJustIdDTO {
 
     private int id;
 }
