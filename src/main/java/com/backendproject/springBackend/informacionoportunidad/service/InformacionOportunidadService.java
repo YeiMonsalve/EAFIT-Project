@@ -20,31 +20,31 @@ public class InformacionOportunidadService {
     @Autowired
     private InformacionOportunidadMapper informacionOportunidadMapper;
 
-    // Crear una información de oportunidad.
+    // Crear una información.
     public InformacionOportunidad crearInformacionOportunidad(InformacionOportunidadNoIdDTO informacionOportunidadNoIdDTO) {
-        InformacionOportunidad informacionOportunidad = informacionOportunidadMapper.toEntity(informacionOportunidadNoIdDTO);
+        InformacionOportunidad informacionOportunidad = informacionOportunidadMapper.informacionOportunidadSinId(informacionOportunidadNoIdDTO);
         return informacionOportunidadRepository.save(informacionOportunidad);
     }
 
-    //Obtener toda la información de oportunidades.
-    public List<InformacionOportunidad> obtenerInformacionOportunidades() {
+    //Obtener todas las informaciones.
+    public List<InformacionOportunidad> obtenerInformacionOportunidad() {
         return informacionOportunidadRepository.findAll();
     }
 
-    //Actualizar una información de oportunidad.
-    public InformacionOportunidad actualizarInformacionOportunidad(int id, InformacionOportunidadNoIdDTO informacionDetails) {
+    //Actualizar una información.
+    public InformacionOportunidad actualizarInformacionOportunidad(Long id, InformacionOportunidadNoIdDTO informacionDetails) {
         InformacionOportunidad informacionOportunidad = informacionOportunidadRepository.findById(id).orElseThrow();
         informacionOportunidad.setInfo(informacionDetails.getInfo());
         return informacionOportunidadRepository.save(informacionOportunidad);
     }
 
     //Obtener información por Id.
-    public Optional<InformacionOportunidad> obtenerInformacionOportunidadPorId(int id) {
+    public Optional<InformacionOportunidad> obtenerInformacionOportunidadPorId(Long id) {
         return informacionOportunidadRepository.findById(id);
     }
 
-    //Eliminar una información de oportunidad por Id.
-    public void eliminarInformacionOportunidad(int id) {
+    //Eliminar una información por Id.
+    public void eliminarInformacionOportunidad(Long id) {
         informacionOportunidadRepository.deleteById(id);
 
 

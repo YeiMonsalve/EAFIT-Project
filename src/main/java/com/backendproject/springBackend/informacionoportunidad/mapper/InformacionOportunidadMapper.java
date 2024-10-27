@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface InformacionOportunidadMapper {
+
     @Mapping(target = "id", ignore = true)
-    InformacionOportunidad toEntity(InformacionOportunidadNoIdDTO informacionOportunidadNoIdDTO);
+    InformacionOportunidad informacionOportunidadSinId(InformacionOportunidadNoIdDTO informacionOportunidadNoIdDTO);
 }
