@@ -19,4 +19,8 @@ public class CategoriaOportunidad {
     private int id;
     private String categoria;
 
+    @OneToMany(mappedBy = "categoriaOpor", cascade = CascadeType.REMOVE)
+    @Setter(AccessLevel.NONE)
+    @Getter(AccessLevel.NONE)
+    private List<Oportunidades> oportunidades;
 }
