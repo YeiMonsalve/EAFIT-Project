@@ -1,5 +1,7 @@
 package com.backendproject.springBackend.tiposoportunidad.service;
 
+import com.backendproject.springBackend.tiposoportunidad.dto.TiposOportunidadNoIdDTO;
+import com.backendproject.springBackend.tiposoportunidad.mapper.TiposOportunidadMapper;
 import com.backendproject.springBackend.tiposoportunidad.model.TiposOportunidad;
 import com.backendproject.springBackend.tiposoportunidad.repository.TiposOportunidadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,30 +12,39 @@ import java.util.Optional;
 
 @Service
 public class TiposOportunidadService {
+
   @Autowired
   private TiposOportunidadRepository tiposOportunidadRepository;
 
-  public TiposOportunidad createTipoDeOportunidad(TiposOportunidad tiposOportunidad){
+  @Autowired
+  private TiposOportunidadMapper tiposOportunidadMapper;
+
+  // Crear un tipo de oportunidad.
+  public TiposOportunidad crearUnTipoInformacion(TiposOportunidadNoIdDTO tiposOportunidadNoIdDTO) {
+    TiposOportunidad tiposOportunidad = tiposOportunidadMapper.tiposOportunidadSinId(tiposOportunidadNoIdDTO);
     return tiposOportunidadRepository.save(tiposOportunidad);
   }
 
-  public Optional<TiposOportunidad> tiposOportunidadFindById(Long id){
-    return tiposOportunidadRepository.findById(id);
-  }
-
-  public List<TiposOportunidad> tiposOportunidadFindAll(){
+  //Obtener todos los tipos de oportunidad.
+  public List<TiposOportunidad> obtenerTiposOportunidad() {
     return tiposOportunidadRepository.findAll();
   }
 
-  public TiposOportunidad updateTiposDeOportunidad(Long id, TiposOportunidad details){
+  //Actualizar un tipo de oportunidad.
+  public TiposOportunidad actualizarTiposOportunidad(Long id, TiposOportunidadNoIdDTO tipoOportunidadDetails) {
     TiposOportunidad tiposOportunidad = tiposOportunidadRepository.findById(id).orElseThrow();
-    tiposOportunidad.setDescripcion(details.getDescripcion());
-    tiposOportunidad.setNombre(details.getNombre());
+    tiposOportunidad.setNombre(tipoOportunidadDetails.getNombre());
+    tiposOportunidad.setDescripcion(tipoOportunidadDetails.getDescripcion());
     return tiposOportunidadRepository.save(tiposOportunidad);
   }
 
-  public void deleteTiposDeOportunidad(Long id){
-    tiposOportunidadRepository.deleteById(id);
+  //Obtener tipo de oportunidad por Id.
+  public Optional<TiposOportunidad> obtenerTiposOportunidadPorId(Long id) {
+    return tiposOportunidadRepository.findById(id);
   }
 
+  //Eliminar un tipo de oportunidad por Id.
+  public void eliminarTiposOportunidad(Long id) {
+    tiposOportunidadRepository.deleteById(id);
+  }
 }

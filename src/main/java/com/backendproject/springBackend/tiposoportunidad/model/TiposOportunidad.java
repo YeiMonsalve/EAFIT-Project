@@ -1,19 +1,26 @@
 package com.backendproject.springBackend.tiposoportunidad.model;
+import com.backendproject.springBackend.oportunidades.model.Oportunidades;
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Data;
+import java.util.List;
 
 @Entity
-@Data
+@Table(name = "tipos_oportunidad")
+@Getter
+@Setter
 public class TiposOportunidad {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
+  private int id;
   private String nombre;
-  private String Descripcion;
+  private String descripcion;
+
+  @OneToMany(mappedBy = "tiposOporId", cascade = CascadeType.REMOVE)
+  @Setter(AccessLevel.NONE)
+  @Getter(AccessLevel.NONE)
+  private List<Oportunidades> oportunidades;
 }
