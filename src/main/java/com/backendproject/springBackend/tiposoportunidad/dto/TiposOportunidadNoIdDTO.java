@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class TiposOportunidadNoIdDTO {
 
-  private String nombre;
-  private String descripcion;
+    private String nombre;
+    private String descripcion;
 }

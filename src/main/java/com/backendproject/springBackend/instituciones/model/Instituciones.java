@@ -11,7 +11,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "instituciones")
-@Getter @Setter
+@Getter
+@Setter
 public class Instituciones {
 
     @Id

@@ -27,7 +27,9 @@ public class UsuariosController {
     // Obtener todos los usuarios.
     @Operation(summary = "Este Get muestra todos los usuarios de la tabla 'usuarios'.", description = "Este método no necesita de ningún parámetro. Solo hay que darle al botón 'Execute'.")
     @GetMapping
-    public List<Usuarios> obtenerUsuarios() { return usuariosService.obtenerUsuarios(); }
+    public List<Usuarios> obtenerUsuarios() {
+        return usuariosService.obtenerUsuarios();
+    }
 
     //Actualizar un usuario.
     @Operation(summary = "Este put actualiza un usuario de la tabla 'usuarios' mediante su Id.", description = "Este método solo permite modificar el usuario ya que el Id es único y este se genera automáticamente.")

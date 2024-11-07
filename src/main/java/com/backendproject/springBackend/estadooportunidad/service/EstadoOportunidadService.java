@@ -7,10 +7,8 @@ import com.backendproject.springBackend.estadooportunidad.repository.EstadoOport
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
 import java.util.Optional;
-
 
 @Service
 public class EstadoOportunidadService {
@@ -22,13 +20,15 @@ public class EstadoOportunidadService {
     private EstadoOportunidadMapper estadoOportunidadMapper;
 
     //Crear estado oportunidad.
-    public EstadoOportunidad crearUnEstadoOportunidad (EstadoOportunidadNoIdDTO estadoOportunidadNoIdDTO) {
-       EstadoOportunidad estadoOportunidad = estadoOportunidadMapper.estadoOportunidadSinId(estadoOportunidadNoIdDTO);
-       return estadoOportunidadRepository.save(estadoOportunidad);
+    public EstadoOportunidad crearUnEstadoOportunidad(EstadoOportunidadNoIdDTO estadoOportunidadNoIdDTO) {
+        EstadoOportunidad estadoOportunidad = estadoOportunidadMapper.estadoOportunidadSinId(estadoOportunidadNoIdDTO);
+        return estadoOportunidadRepository.save(estadoOportunidad);
     }
 
     //Obtener todos los estados de oportunidades.
-    public List<EstadoOportunidad> obtenerEstadoOportunidad() { return estadoOportunidadRepository.findAll(); }
+    public List<EstadoOportunidad> obtenerEstadoOportunidad() {
+        return estadoOportunidadRepository.findAll();
+    }
 
     //Actualizar estados.
     public EstadoOportunidad actualizarEstadoOportunidad(Long id, EstadoOportunidadNoIdDTO estadoDetails) {
@@ -43,6 +43,7 @@ public class EstadoOportunidadService {
     }
 
     //Eliminar un Estado de oportunidades por Id.
-    public void eliminarEstadoOportunidad(Long id) { estadoOportunidadRepository.deleteById(id);}
-
+    public void eliminarEstadoOportunidad(Long id) {
+        estadoOportunidadRepository.deleteById(id);
+    }
 }

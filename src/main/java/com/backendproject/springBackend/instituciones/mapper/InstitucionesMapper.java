@@ -9,5 +9,6 @@ import org.mapstruct.Mapping;
 public interface InstitucionesMapper {
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "idRegion.region", ignore = true)
     Instituciones institucionesSinId(InstitucionesNoIdDTO institucionesNoIdDTO);
 }

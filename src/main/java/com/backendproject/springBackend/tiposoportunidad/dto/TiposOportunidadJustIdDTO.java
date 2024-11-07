@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class TiposOportunidadJustIdDTO {
 
-  private int id;
+    private int id;
 }
