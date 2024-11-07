@@ -41,6 +41,7 @@ public class UsuariosService {
         usuarios.setApellido(usuariosDetails.getApellido());
         usuarios.setEmail(usuariosDetails.getEmail());
         usuarios.setPassword(usuariosDetails.getPassword());
+        usuarios.setBirthday(usuariosDetails.getBirthday());
 
         Roles roles = rolesRepository.findById((long) usuariosDetails.getIdRole().getId()).orElseThrow();
         usuarios.setIdRole(roles);

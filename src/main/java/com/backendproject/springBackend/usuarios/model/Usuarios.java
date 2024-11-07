@@ -2,11 +2,13 @@ package com.backendproject.springBackend.usuarios.model;
 
 import com.backendproject.springBackend.roles.model.Roles;
 import com.backendproject.springBackend.usuariooportunidades.model.UsuarioOportunidades;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -26,6 +28,9 @@ public class Usuarios {
     private String email;
     @Column(nullable = false)
     private String password;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date birthday;
 
     @ManyToOne
     @JoinColumn(name = "id_rol", nullable = false)
