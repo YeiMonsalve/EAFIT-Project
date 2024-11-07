@@ -13,38 +13,38 @@ import java.util.Optional;
 @Service
 public class TiposOportunidadService {
 
-  @Autowired
-  private TiposOportunidadRepository tiposOportunidadRepository;
+    @Autowired
+    private TiposOportunidadRepository tiposOportunidadRepository;
 
-  @Autowired
-  private TiposOportunidadMapper tiposOportunidadMapper;
+    @Autowired
+    private TiposOportunidadMapper tiposOportunidadMapper;
 
-  // Crear un tipo de oportunidad.
-  public TiposOportunidad crearUnTipoInformacion(TiposOportunidadNoIdDTO tiposOportunidadNoIdDTO) {
-    TiposOportunidad tiposOportunidad = tiposOportunidadMapper.tiposOportunidadSinId(tiposOportunidadNoIdDTO);
-    return tiposOportunidadRepository.save(tiposOportunidad);
-  }
+    // Crear un tipo de oportunidad.
+    public TiposOportunidad crearUnTipoInformacion(TiposOportunidadNoIdDTO tiposOportunidadNoIdDTO) {
+        TiposOportunidad tiposOportunidad = tiposOportunidadMapper.tiposOportunidadSinId(tiposOportunidadNoIdDTO);
+        return tiposOportunidadRepository.save(tiposOportunidad);
+    }
 
-  //Obtener todos los tipos de oportunidad.
-  public List<TiposOportunidad> obtenerTiposOportunidad() {
-    return tiposOportunidadRepository.findAll();
-  }
+    //Obtener todos los tipos de oportunidad.
+    public List<TiposOportunidad> obtenerTiposOportunidad() {
+        return tiposOportunidadRepository.findAll();
+    }
 
-  //Actualizar un tipo de oportunidad.
-  public TiposOportunidad actualizarTiposOportunidad(Long id, TiposOportunidadNoIdDTO tipoOportunidadDetails) {
-    TiposOportunidad tiposOportunidad = tiposOportunidadRepository.findById(id).orElseThrow();
-    tiposOportunidad.setNombre(tipoOportunidadDetails.getNombre());
-    tiposOportunidad.setDescripcion(tipoOportunidadDetails.getDescripcion());
-    return tiposOportunidadRepository.save(tiposOportunidad);
-  }
+    //Actualizar un tipo de oportunidad.
+    public TiposOportunidad actualizarTiposOportunidad(Long id, TiposOportunidadNoIdDTO tipoOportunidadDetails) {
+        TiposOportunidad tiposOportunidad = tiposOportunidadRepository.findById(id).orElseThrow();
+        tiposOportunidad.setNombre(tipoOportunidadDetails.getNombre());
+        tiposOportunidad.setDescripcion(tipoOportunidadDetails.getDescripcion());
+        return tiposOportunidadRepository.save(tiposOportunidad);
+    }
 
-  //Obtener tipo de oportunidad por Id.
-  public Optional<TiposOportunidad> obtenerTiposOportunidadPorId(Long id) {
-    return tiposOportunidadRepository.findById(id);
-  }
+    //Obtener tipo de oportunidad por Id.
+    public Optional<TiposOportunidad> obtenerTiposOportunidadPorId(Long id) {
+        return tiposOportunidadRepository.findById(id);
+    }
 
-  //Eliminar un tipo de oportunidad por Id.
-  public void eliminarTiposOportunidad(Long id) {
-    tiposOportunidadRepository.deleteById(id);
-  }
+    //Eliminar un tipo de oportunidad por Id.
+    public void eliminarTiposOportunidad(Long id) {
+        tiposOportunidadRepository.deleteById(id);
+    }
 }

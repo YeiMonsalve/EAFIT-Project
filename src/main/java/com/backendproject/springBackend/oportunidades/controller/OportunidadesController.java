@@ -54,5 +54,4 @@ public class OportunidadesController {
         oportunidadesService.eliminarOportunidad(id);
         return ResponseEntity.noContent().build();
     }
-
 }

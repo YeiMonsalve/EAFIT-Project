@@ -1,4 +1,5 @@
 package com.backendproject.springBackend.tiposoportunidad.model;
+
 import com.backendproject.springBackend.oportunidades.model.Oportunidades;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -13,16 +14,16 @@ import java.util.List;
 @Setter
 public class TiposOportunidad {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  @Column(nullable = false)
-  private String nombre;
-  @Column(nullable = false)
-  private String descripcion;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false)
+    private String nombre;
+    @Column(nullable = false)
+    private String descripcion;
 
-  @OneToMany(mappedBy = "tiposOporId", cascade = CascadeType.REMOVE)
-  @Setter(AccessLevel.NONE)
-  @Getter(AccessLevel.NONE)
-  private List<Oportunidades> oportunidades;
+    @OneToMany(mappedBy = "tiposOporId", cascade = CascadeType.REMOVE)
+    @Setter(AccessLevel.NONE)
+    @Getter(AccessLevel.NONE)
+    private List<Oportunidades> oportunidades;
 }

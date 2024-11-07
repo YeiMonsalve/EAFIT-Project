@@ -8,6 +8,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface TiposOportunidadMapper {
 
-  @Mapping(target = "id", ignore = true)
-  TiposOportunidad tiposOportunidadSinId(TiposOportunidadNoIdDTO tiposOportunidadNoIdDTO);
+    @Mapping(target = "id", ignore = true)
+    TiposOportunidad tiposOportunidadSinId(TiposOportunidadNoIdDTO tiposOportunidadNoIdDTO);
 }

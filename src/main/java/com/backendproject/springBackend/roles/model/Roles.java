@@ -10,7 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "roles")
-@Getter @Setter
+@Getter
+@Setter
 public class Roles {
 
     @Id

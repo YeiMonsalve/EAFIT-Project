@@ -1,4 +1,3 @@
-
 package com.backendproject.springBackend.informacionoportunidad.service;
 
 import com.backendproject.springBackend.informacionoportunidad.dto.InformacionOportunidadNoIdDTO;
@@ -46,9 +45,5 @@ public class InformacionOportunidadService {
     //Eliminar una información por Id.
     public void eliminarInformacionOportunidad(Long id) {
         informacionOportunidadRepository.deleteById(id);
-
-
-
     }
-
 }
