@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UbicacionRegionJustId {
+public class UbicacionRegionJustIdDTO {
 
     private int id;
 }

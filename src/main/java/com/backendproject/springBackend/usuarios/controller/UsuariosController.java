@@ -52,4 +52,3 @@ public class UsuariosController {
         return ResponseEntity.noContent().build();
     }
 }
-

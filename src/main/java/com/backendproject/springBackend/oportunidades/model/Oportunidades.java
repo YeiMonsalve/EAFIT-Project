@@ -5,6 +5,7 @@ import com.backendproject.springBackend.estadooportunidad.model.EstadoOportunida
 import com.backendproject.springBackend.informacionoportunidad.model.InformacionOportunidad;
 import com.backendproject.springBackend.institucionesoportunidades.model.InstitucionesOportunidades;
 import com.backendproject.springBackend.tiposoportunidad.model.TiposOportunidad;
+import com.backendproject.springBackend.usuariooportunidades.model.UsuarioOportunidades;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -20,27 +21,33 @@ public class Oportunidades {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+    @Column(nullable = false)
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "estado_id")
+    @JoinColumn(name = "estado_id", nullable = false)
     private EstadoOportunidad estadoId;
 
     @ManyToOne
-    @JoinColumn(name = "info_id")
+    @JoinColumn(name = "info_id", nullable = false)
     private InformacionOportunidad infoOporId;
 
     @ManyToOne
-    @JoinColumn(name = "tipo_oportunidad_id")
+    @JoinColumn(name = "tipo_oportunidad_id", nullable = false)
     private TiposOportunidad tiposOporId;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
+    @JoinColumn(name = "categoria_id", nullable = false)
     private CategoriaOportunidad categoriaOpor;
 
     @OneToMany(mappedBy = "oportunidadId", cascade = CascadeType.REMOVE)
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
     private List<InstitucionesOportunidades> oportunidadesInstituciones;
+
+    @OneToMany(mappedBy = "oportunidadesId", cascade = CascadeType.REMOVE)
+    @Setter(AccessLevel.NONE)
+    @Getter(AccessLevel.NONE)
+    private List<UsuarioOportunidades> usuarioOportunidades;
 }

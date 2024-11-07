@@ -16,7 +16,8 @@ public class InformacionOportunidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+    @Column(nullable = false)
     private String info;
 
     @OneToMany(mappedBy = "infoOporId", cascade = CascadeType.REMOVE)

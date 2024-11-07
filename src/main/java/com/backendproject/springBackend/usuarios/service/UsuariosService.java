@@ -58,4 +58,3 @@ public class UsuariosService {
         usuariosRepository.deleteById(id);
     }
 }
-

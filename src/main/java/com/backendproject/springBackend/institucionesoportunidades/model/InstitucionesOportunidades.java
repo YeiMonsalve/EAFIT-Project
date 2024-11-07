@@ -17,10 +17,10 @@ public class InstitucionesOportunidades {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "institucion_id")
+    @JoinColumn(name = "institucion_id", nullable = false)
     private Instituciones institucionId;
 
     @ManyToOne
-    @JoinColumn(name = "oportunidad_id")
+    @JoinColumn(name = "oportunidad_id", nullable = false)
     private Oportunidades oportunidadId;
 }

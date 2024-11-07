@@ -16,12 +16,14 @@ public class Instituciones {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+    @Column(nullable = false)
     private String nombre;
+    @Column(nullable = false)
     private String direccion;
 
     @ManyToOne
-    @JoinColumn(name = "id_region")
+    @JoinColumn(name = "id_region", nullable = false)
     private UbicacionRegion idRegion;
 
     @OneToMany(mappedBy = "institucionId", cascade = CascadeType.REMOVE)

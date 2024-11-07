@@ -33,7 +33,7 @@ public class InstitucionesOportunidadesController {
     }
 
     //Actualizar una instituciónOportunidad.
-    @Operation(summary = "Este put actualiza una institución de la tabla 'instituciones_oportunidades' mediante su Id.", description = "Este método permite modificar todos los datos menos el Id ya que el Id es único y este se genera automáticamente.")
+    @Operation(summary = "Este put actualiza una institucionOportunidad de la tabla 'instituciones_oportunidades' mediante su Id.", description = "Este método permite modificar todos los datos menos el Id ya que el Id es único y este se genera automáticamente.")
     @PutMapping("/{id}")
     public ResponseEntity<InstitucionesOportunidades> actualizarInstitucionOportunidad(@PathVariable Long id, @RequestBody InstitucionesOportunidadesNoIdDTO institucionOportunidadDetails) {
         return ResponseEntity.ok(institucionesOportunidadesService.actualizarInstitucionOportunidad(id, institucionOportunidadDetails));

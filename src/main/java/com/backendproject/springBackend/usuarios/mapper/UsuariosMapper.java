@@ -1,6 +1,5 @@
 package com.backendproject.springBackend.usuarios.mapper;
 
-
 import com.backendproject.springBackend.usuarios.dto.UsuariosNoIdDTO;
 import com.backendproject.springBackend.usuarios.model.Usuarios;
 import org.mapstruct.Mapper;

@@ -16,6 +16,8 @@ public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String rol;
 
     @OneToMany(mappedBy = "idRole", cascade = CascadeType.REMOVE)

@@ -1,6 +1,6 @@
 package com.backendproject.springBackend.institucionesoportunidades.dto;
 
-import com.backendproject.springBackend.instituciones.dto.InstitucionesJustIdDto;
+import com.backendproject.springBackend.instituciones.dto.InstitucionesJustIdDTO;
 import com.backendproject.springBackend.oportunidades.dto.OportunidadesJustIdDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 public class InstitucionesOportunidadesNoIdDTO {
 
-    private InstitucionesJustIdDto institucionId;
+    private InstitucionesJustIdDTO institucionId;
     private OportunidadesJustIdDTO oportunidadId;
 }

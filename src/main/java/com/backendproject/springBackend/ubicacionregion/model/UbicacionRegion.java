@@ -16,7 +16,8 @@ public class UbicacionRegion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+    @Column(nullable = false)
     private String region;
 
     @OneToMany(mappedBy = "idRegion", cascade = CascadeType.REMOVE)
