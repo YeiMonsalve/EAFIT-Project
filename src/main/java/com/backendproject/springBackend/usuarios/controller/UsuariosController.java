@@ -1,6 +1,7 @@
 package com.backendproject.springBackend.usuarios.controller;
 
 import com.backendproject.springBackend.usuarios.dto.UsuariosNoIdDTO;
+import com.backendproject.springBackend.usuarios.dto.UsuariosNoIdNoRolDTO;
 import com.backendproject.springBackend.usuarios.model.Usuarios;
 import com.backendproject.springBackend.usuarios.service.UsuariosService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,8 +21,8 @@ public class UsuariosController {
     // Crear un rol.
     @Operation(summary = "Este post permite añadir un nuevo Usuario a la tabla 'usuarios'.", description = "Para crear un usuario solo se necesita agregar el nombre de este; al darle click al botón 'Execute', este guardara el usuario y le asignará un Id.")
     @PostMapping
-    public Usuarios crearUsuarios(@RequestBody UsuariosNoIdDTO usuariosNoIdDTO) {
-        return usuariosService.crearUnUsuario(usuariosNoIdDTO);
+    public Usuarios crearUsuarios(@RequestBody UsuariosNoIdNoRolDTO usuariosNoIdNoRolDTO) {
+        return usuariosService.crearUnUsuario(usuariosNoIdNoRolDTO);
     }
 
     // Obtener todos los usuarios.
