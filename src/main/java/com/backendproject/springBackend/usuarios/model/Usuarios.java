@@ -29,6 +29,7 @@ public class Usuarios {
     @Column(nullable = false)
     private String password;
 
+    @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date birthday;
 
