@@ -4,7 +4,7 @@ import com.backendproject.springBackend.roles.dto.RolesJustIdDTO;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -15,5 +15,5 @@ public class UsuariosNoIdDTO {
     private String email;
     private String password;
     private RolesJustIdDTO idRole;
-    private Date birthday;
+    private LocalDate birthday;
 }
