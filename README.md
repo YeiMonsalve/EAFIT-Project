@@ -20,6 +20,11 @@ FLUSH PRIVILEGES;
 - usuarios
 - usuario_oportunidades
 
+# Datos que se agregan en la tabla "roles" de la base de datos al ejecutar el proyecto:
+
+- User
+- Admin
+
 # Relaciones entre las tablas
 
 1. **`ubicacion_region` y `instituciones`:**
