@@ -3,7 +3,7 @@ package com.backendproject.springBackend.usuarios.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -13,5 +13,5 @@ public class UsuariosNoIdNoRolDTO {
     private String apellido;
     private String email;
     private String password;
-    private Date birthday;
+    private LocalDate birthday;
 }

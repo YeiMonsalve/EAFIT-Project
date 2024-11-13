@@ -19,7 +19,7 @@ public class UsuariosController {
     private UsuariosService usuariosService;
 
     // Crear un rol.
-    @Operation(summary = "Este post permite añadir un nuevo Usuario a la tabla 'usuarios'.", description = "Para crear un usuario solo se necesita agregar el nombre de este; al darle click al botón 'Execute', este guardara el usuario y le asignará un Id.")
+    @Operation(summary = "Este post permite añadir un nuevo Usuario a la tabla 'usuarios'.", description = "Para crear un usuario se necesitan los siguientes datos: nombre, apellido, email, password y birthday; al darle click al botón 'Execute', este guardara el usuario y le asignará un Id.")
     @PostMapping
     public Usuarios crearUsuarios(@RequestBody UsuariosNoIdNoRolDTO usuariosNoIdNoRolDTO) {
         return usuariosService.crearUnUsuario(usuariosNoIdNoRolDTO);
@@ -33,7 +33,7 @@ public class UsuariosController {
     }
 
     //Actualizar un usuario.
-    @Operation(summary = "Este put actualiza un usuario de la tabla 'usuarios' mediante su Id.", description = "Este método solo permite modificar el usuario ya que el Id es único y este se genera automáticamente.")
+    @Operation(summary = "Este put actualiza un usuario de la tabla 'usuarios' mediante su Id.", description = "Este método permite modificar: nombre, apellido, email, password, role y birthday.")
     @PutMapping("/{id}")
     public ResponseEntity<Usuarios> actualizarUsuarios(@PathVariable Long id, @RequestBody UsuariosNoIdDTO usuariosDetails) {
         return ResponseEntity.ok(usuariosService.actualizarUsuarios(id, usuariosDetails));

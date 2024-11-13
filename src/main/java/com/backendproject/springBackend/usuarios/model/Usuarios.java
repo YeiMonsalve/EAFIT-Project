@@ -8,7 +8,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -31,7 +31,7 @@ public class Usuarios {
 
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date birthday;
+    private LocalDate birthday;
 
     @ManyToOne
     @JoinColumn(name = "id_rol", nullable = false)
