@@ -25,4 +25,12 @@ public class Roles {
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
     private List<Usuarios> usuarios;
+
+    public Roles() {
+    }
+
+    public Roles(Long id, String rol) {
+        this.id = id;
+        this.rol = rol;
+    }
 }

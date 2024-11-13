@@ -4,6 +4,7 @@ import com.backendproject.springBackend.roles.dto.RolesNoIdDTO;
 import com.backendproject.springBackend.roles.mapper.RolesMapper;
 import com.backendproject.springBackend.roles.model.Roles;
 import com.backendproject.springBackend.roles.repository.RolesRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +46,13 @@ public class RolesService {
     //Eliminar un rol por Id.
     public void eliminarRol(Long id) {
         rolesRepository.deleteById(id);
+    }
+
+    @PostConstruct
+    public void initializeRoles() {
+        if (rolesRepository.findAll().isEmpty()) {
+            rolesRepository.save(new Roles(null, "User"));
+            rolesRepository.save(new Roles(null, "Admin"));
+        }
     }
 }
