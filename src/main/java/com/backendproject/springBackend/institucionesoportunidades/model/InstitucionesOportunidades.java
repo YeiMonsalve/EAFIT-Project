@@ -23,4 +23,13 @@ public class InstitucionesOportunidades {
     @ManyToOne
     @JoinColumn(name = "oportunidad_id", nullable = false)
     private Oportunidades oportunidadId;
+
+    public InstitucionesOportunidades() {
+    }
+
+    public InstitucionesOportunidades(Long id, Instituciones institucionId, Oportunidades oportunidadId) {
+        this.id = id;
+        this.institucionId = institucionId;
+        this.oportunidadId = oportunidadId;
+    }
 }
