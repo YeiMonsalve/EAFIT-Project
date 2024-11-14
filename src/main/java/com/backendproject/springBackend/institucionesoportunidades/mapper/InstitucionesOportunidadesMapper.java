@@ -12,7 +12,6 @@ public interface InstitucionesOportunidadesMapper {
     @Mapping(target = "institucionId.nombre", ignore = true)
     @Mapping(target = "institucionId.direccion", ignore = true)
     @Mapping(target = "institucionId.idRegion", ignore = true)
-    @Mapping(target = "oportunidadId.nombre", ignore = true)
     @Mapping(target = "oportunidadId.estadoId", ignore = true)
     @Mapping(target = "oportunidadId.infoOporId", ignore = true)
     @Mapping(target = "oportunidadId.tiposOporId", ignore = true)

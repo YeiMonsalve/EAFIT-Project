@@ -12,6 +12,7 @@ import com.backendproject.springBackend.oportunidades.model.Oportunidades;
 import com.backendproject.springBackend.oportunidades.repository.OportunidadesRepository;
 import com.backendproject.springBackend.tiposoportunidad.model.TiposOportunidad;
 import com.backendproject.springBackend.tiposoportunidad.repository.TiposOportunidadRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +54,6 @@ public class OportunidadesService {
     //Actualizar una oportunidad.
     public Oportunidades actualizarOportunidad(Long id, OportunidadesNoIdDTO oportunidadDetails) {
         Oportunidades oportunidades = oportunidadesRepository.findById(id).orElseThrow();
-        oportunidades.setNombre(oportunidadDetails.getNombre());
 
         CategoriaOportunidad categoriaOportunidad = categoriaOportunidadRepository.findById((long) oportunidadDetails.getCategoriaOpor().getId()).orElseThrow();
         oportunidades.setCategoriaOpor(categoriaOportunidad);

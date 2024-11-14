@@ -5,6 +5,7 @@ import com.backendproject.springBackend.usuarios.dto.UsuarioLoginDTO;
 import com.backendproject.springBackend.usuarios.dto.UsuariosNoIdNoRolDTO;
 import com.backendproject.springBackend.usuarios.service.UsuariosService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class AuthController {
 
     @Operation(summary = "Este Post permite registrar un usuario", description = "El rol se asigna automáticamente y el id también.")
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UsuariosNoIdNoRolDTO user) {
+    public ResponseEntity<String> register(@Valid @RequestBody UsuariosNoIdNoRolDTO user) {
         usuariosService.crearUnUsuario(user);
         return ResponseEntity.ok("Usuario registrado exitosamente.");
     }

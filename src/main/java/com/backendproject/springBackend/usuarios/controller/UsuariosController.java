@@ -5,6 +5,7 @@ import com.backendproject.springBackend.usuarios.dto.UsuariosNoIdNoRolDTO;
 import com.backendproject.springBackend.usuarios.model.Usuarios;
 import com.backendproject.springBackend.usuarios.service.UsuariosService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,10 @@ public class UsuariosController {
     @Autowired
     private UsuariosService usuariosService;
 
-    // Crear un rol.
+    // Crear un usuario.
     @Operation(summary = "Este post permite añadir un nuevo Usuario a la tabla 'usuarios'.", description = "Para crear un usuario se necesitan los siguientes datos: nombre, apellido, email, password y birthday (año-mes-día); al darle click al botón 'Execute', este guardara el usuario y le asignará un Id.")
     @PostMapping
-    public Usuarios crearUsuarios(@RequestBody UsuariosNoIdNoRolDTO usuariosNoIdNoRolDTO) {
+    public Usuarios crearUsuarios(@Valid @RequestBody UsuariosNoIdNoRolDTO usuariosNoIdNoRolDTO) {
         return usuariosService.crearUnUsuario(usuariosNoIdNoRolDTO);
     }
 

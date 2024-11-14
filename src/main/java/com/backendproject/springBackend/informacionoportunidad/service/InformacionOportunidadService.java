@@ -4,6 +4,7 @@ import com.backendproject.springBackend.informacionoportunidad.dto.InformacionOp
 import com.backendproject.springBackend.informacionoportunidad.mapper.InformacionOportunidadMapper;
 import com.backendproject.springBackend.informacionoportunidad.model.InformacionOportunidad;
 import com.backendproject.springBackend.informacionoportunidad.repository.InformacionOportunidadRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +46,14 @@ public class InformacionOportunidadService {
     //Eliminar una información por Id.
     public void eliminarInformacionOportunidad(Long id) {
         informacionOportunidadRepository.deleteById(id);
+    }
+
+    @PostConstruct
+    public void initializeRoles() {
+        if (informacionOportunidadRepository.findAll().isEmpty()) {
+            informacionOportunidadRepository.save(new InformacionOportunidad(null, "Abierto para inscripciones"));
+            informacionOportunidadRepository.save(new InformacionOportunidad(null, "Inscripciones cerradas"));
+            informacionOportunidadRepository.save(new InformacionOportunidad(null, "Suspendido"));
+        }
     }
 }

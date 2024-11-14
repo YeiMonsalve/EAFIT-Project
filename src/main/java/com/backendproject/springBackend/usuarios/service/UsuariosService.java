@@ -1,5 +1,6 @@
 package com.backendproject.springBackend.usuarios.service;
 
+import com.backendproject.springBackend.exception.UserAlreadyExistsException;
 import com.backendproject.springBackend.roles.model.Roles;
 import com.backendproject.springBackend.roles.repository.RolesRepository;
 import com.backendproject.springBackend.usuarios.dto.UsuariosNoIdDTO;
@@ -62,6 +63,10 @@ public class UsuariosService implements UserDetailsService {
     // Crear un Usuario.
     public Usuarios crearUnUsuario(UsuariosNoIdNoRolDTO usuariosNoIdNoRolDTO) {
         Usuarios usuarios = usuariosMapper.usuariosNoIdNoRol(usuariosNoIdNoRolDTO);
+
+        if (usuariosRepository.findByEmail(usuarios.getEmail()) != null) {
+            throw new UserAlreadyExistsException("El usuario con el email " + usuarios.getEmail() + " ya existe.");
+        }
 
         usuarios.setPassword(passwordEncoder().encode(usuariosNoIdNoRolDTO.getPassword()));
 

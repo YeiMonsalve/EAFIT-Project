@@ -11,8 +11,8 @@ public interface OportunidadesMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "infoOporId.info", ignore = true)
-    @Mapping(target = "tiposOporId.nombre", ignore = true)
-    @Mapping(target = "tiposOporId.descripcion", ignore = true)
+    @Mapping(target = "tiposOporId.url", ignore = true)
     @Mapping(target = "categoriaOpor", ignore = true)
+    @Mapping(target = "tiposOporId.nombre", ignore = true)
     Oportunidades oportunidadesSinId(OportunidadesNoIdDTO oportunidadesNoIdDTO);
 }

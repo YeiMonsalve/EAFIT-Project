@@ -24,4 +24,12 @@ public class EstadoOportunidad {
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
     private List<Oportunidades> oportunidades;
+
+    public EstadoOportunidad() {
+    }
+
+    public EstadoOportunidad(Long id, String estado) {
+        this.id = id;
+        this.estado = estado;
+    }
 }

@@ -20,10 +20,19 @@ public class TiposOportunidad {
     @Column(nullable = false)
     private String nombre;
     @Column(nullable = false)
-    private String descripcion;
+    private String url;
 
     @OneToMany(mappedBy = "tiposOporId", cascade = CascadeType.REMOVE)
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
     private List<Oportunidades> oportunidades;
+
+    public TiposOportunidad() {
+    }
+
+    public TiposOportunidad(Long id, String nombre, String url) {
+        this.id = id;
+        this.nombre = nombre;
+        this.url = url;
+    }
 }

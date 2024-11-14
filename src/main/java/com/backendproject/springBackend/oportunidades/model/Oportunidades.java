@@ -22,8 +22,6 @@ public class Oportunidades {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String nombre;
 
     @ManyToOne
     @JoinColumn(name = "estado_id", nullable = false)
@@ -50,4 +48,14 @@ public class Oportunidades {
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
     private List<UsuarioOportunidades> usuarioOportunidades;
+
+    public Oportunidades() {
+    }
+
+    public Oportunidades(EstadoOportunidad estadoId, InformacionOportunidad infoOporId, TiposOportunidad tiposOporId, CategoriaOportunidad categoriaOpor) {
+        this.estadoId = estadoId;
+        this.infoOporId = infoOporId;
+        this.tiposOporId = tiposOporId;
+        this.categoriaOpor = categoriaOpor;
+    }
 }

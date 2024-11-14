@@ -31,4 +31,14 @@ public class Instituciones {
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
     private List<InstitucionesOportunidades> oportunidadesInstituciones;
+
+    public Instituciones() {
+    }
+
+    public Instituciones(Long id, String nombre, String direccion, UbicacionRegion idRegion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.idRegion = idRegion;
+    }
 }

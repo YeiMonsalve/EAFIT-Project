@@ -24,4 +24,12 @@ public class CategoriaOportunidad {
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
     private List<Oportunidades> oportunidades;
+
+    public CategoriaOportunidad() {
+    }
+
+    public CategoriaOportunidad(Long id, String categoria) {
+        this.id = id;
+        this.categoria = categoria;
+    }
 }

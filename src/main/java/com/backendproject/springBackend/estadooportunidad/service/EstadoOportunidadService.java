@@ -4,6 +4,7 @@ import com.backendproject.springBackend.estadooportunidad.dto.EstadoOportunidadN
 import com.backendproject.springBackend.estadooportunidad.mapper.EstadoOportunidadMapper;
 import com.backendproject.springBackend.estadooportunidad.model.EstadoOportunidad;
 import com.backendproject.springBackend.estadooportunidad.repository.EstadoOportunidadRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +46,13 @@ public class EstadoOportunidadService {
     //Eliminar un Estado de oportunidades por Id.
     public void eliminarEstadoOportunidad(Long id) {
         estadoOportunidadRepository.deleteById(id);
+    }
+
+    @PostConstruct
+    public void initializeRoles() {
+        if (estadoOportunidadRepository.findAll().isEmpty()) {
+            estadoOportunidadRepository.save(new EstadoOportunidad(null, "Activo"));
+            estadoOportunidadRepository.save(new EstadoOportunidad(null, "Inactivo"));
+        }
     }
 }

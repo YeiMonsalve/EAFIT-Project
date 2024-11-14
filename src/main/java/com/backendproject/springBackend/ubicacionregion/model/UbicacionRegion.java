@@ -24,4 +24,12 @@ public class UbicacionRegion {
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
     private List<Instituciones> instituciones;
+
+    public UbicacionRegion() {
+    }
+
+    public UbicacionRegion(Long id, String region) {
+        this.id = id;
+        this.region = region;
+    }
 }

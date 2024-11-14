@@ -11,7 +11,6 @@ import lombok.Setter;
 @Setter
 public class OportunidadesNoIdDTO {
 
-    private String nombre;
     private EstadoOportunidadJustIdDTO estadoId;
     private InformacionOportunidadJustIdDTO infoOporId;
     private TiposOportunidadJustIdDTO tiposOporId;

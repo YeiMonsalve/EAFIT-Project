@@ -8,5 +8,5 @@ import lombok.Setter;
 public class TiposOportunidadNoIdDTO {
 
     private String nombre;
-    private String descripcion;
+    private String url;
 }

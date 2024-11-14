@@ -4,6 +4,8 @@ import com.backendproject.springBackend.categoriaoportunidad.dto.CategoriaOportu
 import com.backendproject.springBackend.categoriaoportunidad.mapper.CategoriaOportunidadMapper;
 import com.backendproject.springBackend.categoriaoportunidad.model.CategoriaOportunidad;
 import com.backendproject.springBackend.categoriaoportunidad.repository.CategoriaOportunidadRepository;
+import com.backendproject.springBackend.ubicacionregion.model.UbicacionRegion;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +47,14 @@ public class CategoriaOportunidadService {
     //Eliminar una categoria por Id.
     public void eliminarCategoriaOportunidad(Long id) {
         categoriaOportunidadRepository.deleteById(id);
+    }
+
+    @PostConstruct
+    public void initializeRoles() {
+        if (categoriaOportunidadRepository.findAll().isEmpty()) {
+            categoriaOportunidadRepository.save(new CategoriaOportunidad(null, "Formatica"));
+            categoriaOportunidadRepository.save(new CategoriaOportunidad(null, "Socioeconómica"));
+            categoriaOportunidadRepository.save(new CategoriaOportunidad(null, "Bootcamps"));
+        }
     }
 }
