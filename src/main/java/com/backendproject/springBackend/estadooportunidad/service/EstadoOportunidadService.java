@@ -49,7 +49,7 @@ public class EstadoOportunidadService {
     }
 
     @PostConstruct
-    public void initializeRoles() {
+    public void initializeEstado() {
         if (estadoOportunidadRepository.findAll().isEmpty()) {
             estadoOportunidadRepository.save(new EstadoOportunidad(null, "Activo"));
             estadoOportunidadRepository.save(new EstadoOportunidad(null, "Inactivo"));

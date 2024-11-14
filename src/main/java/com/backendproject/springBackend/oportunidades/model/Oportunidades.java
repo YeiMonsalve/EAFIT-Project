@@ -52,7 +52,8 @@ public class Oportunidades {
     public Oportunidades() {
     }
 
-    public Oportunidades(EstadoOportunidad estadoId, InformacionOportunidad infoOporId, TiposOportunidad tiposOporId, CategoriaOportunidad categoriaOpor) {
+    public Oportunidades(Long id, EstadoOportunidad estadoId, InformacionOportunidad infoOporId, TiposOportunidad tiposOporId, CategoriaOportunidad categoriaOpor) {
+        this.id = id;
         this.estadoId = estadoId;
         this.infoOporId = infoOporId;
         this.tiposOporId = tiposOporId;

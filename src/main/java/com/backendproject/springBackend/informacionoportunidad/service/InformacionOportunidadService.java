@@ -49,7 +49,7 @@ public class InformacionOportunidadService {
     }
 
     @PostConstruct
-    public void initializeRoles() {
+    public void initializeInformacion() {
         if (informacionOportunidadRepository.findAll().isEmpty()) {
             informacionOportunidadRepository.save(new InformacionOportunidad(null, "Abierto para inscripciones"));
             informacionOportunidadRepository.save(new InformacionOportunidad(null, "Inscripciones cerradas"));

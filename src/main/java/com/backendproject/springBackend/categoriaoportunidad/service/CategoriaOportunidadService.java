@@ -50,7 +50,7 @@ public class CategoriaOportunidadService {
     }
 
     @PostConstruct
-    public void initializeRoles() {
+    public void initializeCategoria() {
         if (categoriaOportunidadRepository.findAll().isEmpty()) {
             categoriaOportunidadRepository.save(new CategoriaOportunidad(null, "Formatica"));
             categoriaOportunidadRepository.save(new CategoriaOportunidad(null, "Socioeconómica"));
