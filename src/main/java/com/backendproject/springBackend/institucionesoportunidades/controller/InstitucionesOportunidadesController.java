@@ -1,10 +1,12 @@
 package com.backendproject.springBackend.institucionesoportunidades.controller;
 
+import com.backendproject.springBackend.institucionesoportunidades.dto.FiltrarOportunidadesDTO;
 import com.backendproject.springBackend.institucionesoportunidades.dto.InstitucionesOportunidadesNoIdDTO;
 import com.backendproject.springBackend.institucionesoportunidades.model.InstitucionesOportunidades;
 import com.backendproject.springBackend.institucionesoportunidades.service.InstitucionesOportunidadesService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,5 +55,19 @@ public class InstitucionesOportunidadesController {
     public ResponseEntity<Void> eliminarInstitucionOportunidad(@PathVariable Long id) {
         institucionesOportunidadesService.eliminarInstitucionOportunidad(id);
         return ResponseEntity.noContent().build();
+    }
+
+    //Filtrar oportunidades e instituciones
+    @Operation(summary = "Este Post filtra todas las Oportunidades de la tabla 'instituciones_oportunidades'.", description = "Este método necesita parámetros. Luego hay que darle al botón 'Execute'.")
+    @PostMapping("/filter")
+    public List<FiltrarOportunidadesDTO> filtrarOporIns(@RequestBody FiltrarOportunidadesDTO filtrarOportunidadesDTO) {
+        return institucionesOportunidadesService.filtrador(filtrarOportunidadesDTO);
+    }
+
+    // Obtener todas las institucionesOportunidades.
+    @Operation(summary = "Este Get muestra todas las institucionesOportunidades de la tabla 'instituciones_oportunidades'.", description = "Este método no necesita de ningún parámetro. Solo hay que darle al botón 'Execute'.")
+    @GetMapping("/listarOportunidad")
+    public List<FiltrarOportunidadesDTO> listarOportunidad() {
+        return institucionesOportunidadesService.filtrador();
     }
 }

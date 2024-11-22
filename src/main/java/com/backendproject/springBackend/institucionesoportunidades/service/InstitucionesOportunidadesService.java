@@ -3,9 +3,11 @@ package com.backendproject.springBackend.institucionesoportunidades.service;
 import com.backendproject.springBackend.instituciones.model.Instituciones;
 import com.backendproject.springBackend.instituciones.repository.InstitucionesRepository;
 import com.backendproject.springBackend.instituciones.service.InstitucionesService;
+import com.backendproject.springBackend.institucionesoportunidades.dto.FiltrarOportunidadesDTO;
 import com.backendproject.springBackend.institucionesoportunidades.dto.InstitucionesOportunidadesNoIdDTO;
 import com.backendproject.springBackend.institucionesoportunidades.mapper.InstitucionesOportunidadesMapper;
 import com.backendproject.springBackend.institucionesoportunidades.model.InstitucionesOportunidades;
+import com.backendproject.springBackend.institucionesoportunidades.repository.CustomInstitucionesOportunidadesRepositoryImpl;
 import com.backendproject.springBackend.institucionesoportunidades.repository.InstitucionesOportunidadesRepository;
 import com.backendproject.springBackend.oportunidades.model.Oportunidades;
 import com.backendproject.springBackend.oportunidades.repository.OportunidadesRepository;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class InstitucionesOportunidadesService {
@@ -38,6 +41,9 @@ public class InstitucionesOportunidadesService {
     @Autowired
     private InstitucionesService institucionesService;
 
+    @Autowired
+    private CustomInstitucionesOportunidadesRepositoryImpl customInstitucionesOportunidadesRepository;
+
     // Crear una relación institución-oportunidad.
     public InstitucionesOportunidades crearUnaInstitucionOportunidad(InstitucionesOportunidadesNoIdDTO institucionesOportunidadesNoIdDTO) {
         InstitucionesOportunidades institucionesOportunidades = institucionesOportunidadesMapper.institucionesOportunidadesSinId(institucionesOportunidadesNoIdDTO);
@@ -47,6 +53,22 @@ public class InstitucionesOportunidadesService {
     //Obtener todas las relaciones institución-oportunidad.
     public List<InstitucionesOportunidades> obtenerInstitucionesOportunidades() {
         return institucionesOportunidadesRepository.findAll();
+    }
+
+    //Obtener todas las relaciones institución-oportunidad.
+    public List<FiltrarOportunidadesDTO> filtrador() {
+
+        List<InstitucionesOportunidades> institucionesOportunidadesList = institucionesOportunidadesRepository.findAll();
+
+        List<FiltrarOportunidadesDTO> filtrarOportunidadesDTOList = mapperToDTO(institucionesOportunidadesList);
+
+        return filtrarOportunidadesDTOList;
+    }
+
+    private static List<FiltrarOportunidadesDTO> mapperToDTO(List<InstitucionesOportunidades> institucionesOportunidadesList) {
+        List<FiltrarOportunidadesDTO> filtrarOportunidadesDTOList = institucionesOportunidadesList.stream()
+                .map(oportunidad -> new FiltrarOportunidadesDTO(oportunidad.getOportunidadId().getTiposOporId().getNombre(), oportunidad.getInstitucionId().getIdRegion().getId(), oportunidad.getOportunidadId().getCategoriaOpor().getId(), oportunidad.getInstitucionId().getId(), oportunidad.getInstitucionId().getIdRegion().getRegion(), oportunidad.getOportunidadId().getTiposOporId().getNombre(), oportunidad.getInstitucionId().getNombre(), oportunidad.getOportunidadId().getTiposOporId().getUrl())).collect(Collectors.toList());
+        return filtrarOportunidadesDTOList;
     }
 
     //Actualizar una relación institución-oportunidad.
@@ -71,6 +93,16 @@ public class InstitucionesOportunidadesService {
     //Eliminar una institución-oportunidad por Id.
     public void eliminarInstitucionOportunidad(Long id) {
         institucionesOportunidadesRepository.deleteById(id);
+    }
+
+    //Filtrar oportunidades.
+    public List<FiltrarOportunidadesDTO> filtrador(FiltrarOportunidadesDTO filtrarOportunidadesDTO) {
+
+        List<InstitucionesOportunidades> institucionesOportunidadesList = customInstitucionesOportunidadesRepository.filtrarOportunidades(filtrarOportunidadesDTO);
+
+        List<FiltrarOportunidadesDTO> filtrarOportunidadesDTOList = mapperToDTO(institucionesOportunidadesList);
+
+        return filtrarOportunidadesDTOList;
     }
 
     @PostConstruct
